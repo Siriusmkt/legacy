@@ -707,6 +707,22 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 .footer-main div > p:first-child { margin-bottom: 12px; color: #706a61; font-size: 9px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .footer-main div > a:not(.text-link) { min-height: 34px; color: var(--ivory-soft); font-size: 12px; transition: color 200ms ease; }
 .footer-main div > a:hover { color: var(--gold-light); }
+.footer-contact .footer-instagram {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 9px;
+}
+.footer-instagram img {
+  display: block;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  opacity: .84;
+  transition: opacity 200ms ease, transform 260ms var(--ease);
+}
+.footer-instagram:hover img,
+.footer-instagram:focus-visible img { opacity: 1; transform: scale(1.08); }
 .footer-message > p:first-child { max-width: 330px; color: var(--ivory-soft) !important; font-family: var(--display); font-size: 28px !important; font-weight: 400 !important; line-height: 1.25; letter-spacing: -.02em !important; text-transform: none !important; }
 .footer-legal { display: flex; justify-content: space-between; gap: 60px; padding-block: 24px 34px; border-top: 1px solid var(--line-soft); color: #6f6a62; font-size: 9px; line-height: 1.6; }
 .footer-legal p { margin: 0; }
