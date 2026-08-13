@@ -2734,6 +2734,31 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 
 /* Home mobile header: use physical viewport coordinates, independent of the shell. */
 @media (max-width: 820px) {
+  html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+  body.home-page {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
+  .home-page main,
+  .home-page .hero,
+  .home-page .site-footer,
+  .home-page section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
   .home-page .site-header .brand {
     position: fixed !important;
     top: calc(env(safe-area-inset-top, 0px) + ((var(--header-height) - 50px) / 2)) !important;
@@ -2752,7 +2777,7 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 
   .home-page .whatsapp-float {
     position: fixed !important;
-    inset: auto calc(18px + env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) auto !important;
+    inset: auto calc(26px + env(safe-area-inset-right, 0px)) calc(22px + env(safe-area-inset-bottom, 0px)) auto !important;
     display: block !important;
     width: 52px !important;
     min-width: 52px !important;
@@ -2767,5 +2792,19 @@ h2 em { color: var(--gold-light); font-weight: 400; }
     width: 52px !important;
     height: 52px !important;
     margin: 0 !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.12) !important;
+  }
+  .home-page .whatsapp-icon::before { display: none !important; }
+
+  /* The large floating crest competes with the headline and can extend the
+     first mobile viewport. The header wordmark remains as the sole brand mark. */
+  .home-page .hero-mark,
+  .home-page .hero-mark.home-depth { display: none !important; }
+}
+
+@media (max-width: 380px) {
+  .home-page .whatsapp-float {
+    right: calc(22px + env(safe-area-inset-right, 0px)) !important;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
