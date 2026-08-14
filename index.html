@@ -23,7 +23,7 @@
       rel="stylesheet"
     >
     <script>document.documentElement.classList.add('js');</script>
-    <link rel="stylesheet" href="styles.css?v=video-proof-1">
+    <link rel="stylesheet" href="styles.css?v=proof-carousel-1">
   </head>
   <body class="home-page">
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -176,43 +176,104 @@
         </div>
       </section>
 
-      <section class="social-proof section-light section" id="depoimentos" aria-labelledby="social-proof-title">
+      <section class="social-proof section" id="depoimentos" aria-labelledby="social-proof-title">
         <div class="shell social-proof-heading">
           <div>
             <p class="eyebrow reveal"><span></span> Experiências reais</p>
-            <h2 id="social-proof-title" class="reveal">A melhor prova<br><em>não vem da gente.</em></h2>
+            <h2 id="social-proof-title" class="reveal">Confiança se constrói no processo.<br><em>E aparece no resultado.</em></h2>
           </div>
-          <p class="reveal">Ouça, com a voz de quem viveu a experiência, dois relatos compartilhados com a Legacy.</p>
+          <p class="reveal">Relatos de quem viveu a negociação com a Legacy — apresentados um por vez, com o tempo e a atenção que cada história merece.</p>
         </div>
 
-        <div class="shell testimonial-grid">
-          <article class="testimonial-card reveal" data-testimonial-card>
-            <div class="testimonial-video-frame">
-              <video data-testimonial-video playsinline preload="metadata" poster="assets/legacy-depoimento-01.webp" aria-label="Primeiro depoimento em vídeo de cliente da Legacy">
-                <source src="assets/legacy-depoimento-01.mp4" type="video/mp4">
-                Seu navegador não oferece suporte à reprodução de vídeo.
-              </video>
-              <button class="testimonial-play" type="button" data-video-play aria-label="Reproduzir primeiro depoimento">
-                <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5Z"/></svg></span>
-                <small>Assistir relato</small>
-              </button>
-            </div>
-            <div class="testimonial-meta"><span>01 · Relato real</span><p>Experiência compartilhada em vídeo, com áudio original.</p></div>
-          </article>
+        <div class="shell proof-carousel reveal" data-proof-carousel tabindex="0" aria-label="Galeria de experiências reais">
+          <div class="proof-carousel-rail" aria-hidden="true">
+            <span class="proof-current" data-proof-current>01</span>
+            <span class="proof-divider"></span>
+            <span class="proof-total" data-proof-total>08</span>
+          </div>
 
-          <article class="testimonial-card testimonial-card-offset reveal" data-testimonial-card>
-            <div class="testimonial-video-frame">
-              <video data-testimonial-video playsinline preload="metadata" poster="assets/legacy-depoimento-02.webp" aria-label="Segundo depoimento em vídeo de cliente da Legacy">
-                <source src="assets/legacy-depoimento-02.mp4" type="video/mp4">
-                Seu navegador não oferece suporte à reprodução de vídeo.
-              </video>
-              <button class="testimonial-play" type="button" data-video-play aria-label="Reproduzir segundo depoimento">
-                <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5Z"/></svg></span>
-                <small>Assistir relato</small>
-              </button>
-            </div>
-            <div class="testimonial-meta"><span>02 · Relato real</span><p>Experiência compartilhada em vídeo, com áudio original.</p></div>
-          </article>
+          <button class="proof-arrow proof-arrow-prev" type="button" data-proof-prev aria-label="Ver prova anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+          </button>
+
+          <div class="proof-viewport">
+            <article class="proof-slide is-active" data-proof-slide aria-hidden="false">
+              <div class="proof-media testimonial-video-frame">
+                <video data-testimonial-video playsinline preload="metadata" poster="assets/legacy-depoimento-02.webp" aria-label="Depoimento em vídeo de cliente da Legacy">
+                  <source src="assets/legacy-depoimento-02.mp4" type="video/mp4">
+                  Seu navegador não oferece suporte à reprodução de vídeo.
+                </video>
+                <button class="testimonial-play" type="button" data-video-play aria-label="Reproduzir depoimento">
+                  <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5Z"/></svg></span>
+                  <small>Assistir relato</small>
+                </button>
+              </div>
+              <div class="proof-caption"><span>01 · Depoimento em vídeo</span><p>Uma experiência real, compartilhada com voz e áudio originais.</p></div>
+            </article>
+
+            <article class="proof-slide" data-proof-slide aria-hidden="true" inert>
+              <div class="proof-media testimonial-video-frame">
+                <video data-testimonial-video playsinline preload="metadata" poster="assets/legacy-depoimento-01.webp" aria-label="Depoimento em vídeo de cliente da Legacy">
+                  <source src="assets/legacy-depoimento-01.mp4" type="video/mp4">
+                  Seu navegador não oferece suporte à reprodução de vídeo.
+                </video>
+                <button class="testimonial-play" type="button" data-video-play aria-label="Reproduzir depoimento">
+                  <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 7 8 5-8 5Z"/></svg></span>
+                  <small>Assistir relato</small>
+                </button>
+              </div>
+              <div class="proof-caption"><span>02 · Depoimento em vídeo</span><p>Um relato espontâneo sobre o atendimento e a negociação.</p></div>
+            </article>
+
+            <article class="proof-slide" data-proof-slide aria-hidden="true" inert>
+              <figure class="proof-media proof-image-frame">
+                <img src="assets/legacy-prova-social-01.jpg" alt="Comprovante de transferência de comissão para parceiro, com dados pessoais preservados" loading="lazy">
+              </figure>
+              <div class="proof-caption"><span>03 · Comissão paga</span><p>Registro de transferência concluída para um parceiro Legacy.</p></div>
+            </article>
+
+            <article class="proof-slide" data-proof-slide aria-hidden="true" inert>
+              <figure class="proof-media proof-image-frame">
+                <img src="assets/legacy-prova-social-02.jpg" alt="Conversa com confirmação de pagamento ao cliente e da comissão, com dados pessoais preservados" loading="lazy">
+              </figure>
+              <div class="proof-caption"><span>04 · Cessão concluída</span><p>Confirmação de pagamento ao cliente e de comissão ao parceiro.</p></div>
+            </article>
+
+            <article class="proof-slide" data-proof-slide aria-hidden="true" inert>
+              <figure class="proof-media proof-image-frame">
+                <img src="assets/legacy-prova-social-03.jpg" alt="Comprovantes de pagamentos de cessão finalizada, com dados pessoais preservados" loading="lazy">
+              </figure>
+              <div class="proof-caption"><span>05 · Operação finalizada</span><p>Pagamentos registrados em mais uma cessão acompanhada pela Legacy.</p></div>
+            </article>
+
+            <article class="proof-slide" data-proof-slide aria-hidden="true" inert>
+              <figure class="proof-media proof-image-frame">
+                <img src="assets/legacy-prova-social-04.jpg" alt="Conversa com confirmação de recebimento do pagamento, com dados pessoais preservados" loading="lazy">
+              </figure>
+              <div class="proof-caption"><span>06 · Recebimento confirmado</span><p>A confirmação que encerra uma negociação conduzida até o fim.</p></div>
+            </article>
+
+            <article class="proof-slide" data-proof-slide aria-hidden="true" inert>
+              <figure class="proof-media proof-image-frame">
+                <img src="assets/legacy-prova-social-05.jpg" alt="Conversa com confirmação de pagamentos e continuidade da parceria, com dados pessoais preservados" loading="lazy">
+              </figure>
+              <div class="proof-caption"><span>07 · Parceria contínua</span><p>Pagamentos confirmados e uma relação de confiança que permanece.</p></div>
+            </article>
+
+            <article class="proof-slide" data-proof-slide aria-hidden="true" inert>
+              <figure class="proof-media proof-image-frame">
+                <img src="assets/legacy-prova-social-06.jpg" alt="Comprovantes enviados para confirmação de clientes e parceiro, com dados pessoais preservados" loading="lazy">
+              </figure>
+              <div class="proof-caption"><span>08 · Pagamentos acompanhados</span><p>Cliente, advogado e parceiro acompanhados em cada confirmação.</p></div>
+            </article>
+          </div>
+
+          <button class="proof-arrow proof-arrow-next" type="button" data-proof-next aria-label="Ver próxima prova">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
+          </button>
+
+          <div class="proof-dots" data-proof-dots aria-label="Selecionar prova social"></div>
+          <p class="proof-hint">Use as setas para conhecer o próximo relato</p>
         </div>
       </section>
 

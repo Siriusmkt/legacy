@@ -200,43 +200,97 @@
     });
   });
 
-  const testimonialCards = [...document.querySelectorAll('[data-testimonial-card]')];
-  testimonialCards.forEach((card) => {
-    const video = card.querySelector('[data-testimonial-video]');
-    const playButton = card.querySelector('[data-video-play]');
-    if (!video || !playButton) return;
+  const proofCarousel = document.querySelector('[data-proof-carousel]');
+  if (proofCarousel) {
+    const slides = [...proofCarousel.querySelectorAll('[data-proof-slide]')];
+    const prevButton = proofCarousel.querySelector('[data-proof-prev]');
+    const nextButton = proofCarousel.querySelector('[data-proof-next]');
+    const currentLabel = proofCarousel.querySelector('[data-proof-current]');
+    const totalLabel = proofCarousel.querySelector('[data-proof-total]');
+    const dotsHost = proofCarousel.querySelector('[data-proof-dots]');
+    let activeIndex = 0;
+    let touchStartX = 0;
 
-    const resetVideo = () => {
+    const formatIndex = (value) => String(value + 1).padStart(2, '0');
+
+    const stopVideo = (slide, rewind = true) => {
+      const video = slide.querySelector('[data-testimonial-video]');
+      if (!video) return;
       video.pause();
       video.controls = false;
-      card.classList.remove('is-playing');
-      if (video.ended) {
-        video.currentTime = 0;
-        video.load();
-      }
+      if (rewind) video.currentTime = 0;
+      slide.classList.remove('is-playing');
     };
 
-    playButton.addEventListener('click', () => {
-      testimonialCards.forEach((otherCard) => {
-        if (otherCard === card) return;
-        const otherVideo = otherCard.querySelector('[data-testimonial-video]');
-        if (!otherVideo) return;
-        otherVideo.pause();
-        otherVideo.currentTime = 0;
-        otherVideo.controls = false;
-        otherCard.classList.remove('is-playing');
-      });
-
-      video.controls = true;
-      card.classList.add('is-playing');
-      video.play().catch(() => {
-        video.controls = false;
-        card.classList.remove('is-playing');
-      });
+    const dots = slides.map((slide, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'proof-dot';
+      dot.setAttribute('aria-label', `Mostrar prova ${index + 1}`);
+      dot.addEventListener('click', () => showSlide(index));
+      dotsHost?.appendChild(dot);
+      return dot;
     });
 
-    video.addEventListener('ended', resetVideo);
-  });
+    const showSlide = (nextIndex) => {
+      const normalizedIndex = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, index) => {
+        const isActive = index === normalizedIndex;
+        if (!isActive) stopVideo(slide);
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', String(!isActive));
+        if (isActive) slide.removeAttribute('inert');
+        else slide.setAttribute('inert', '');
+        dots[index]?.classList.toggle('is-active', isActive);
+        dots[index]?.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+      activeIndex = normalizedIndex;
+      if (currentLabel) currentLabel.textContent = formatIndex(activeIndex);
+    };
+
+    if (totalLabel) totalLabel.textContent = String(slides.length).padStart(2, '0');
+    showSlide(0);
+
+    prevButton?.addEventListener('click', () => showSlide(activeIndex - 1));
+    nextButton?.addEventListener('click', () => showSlide(activeIndex + 1));
+    proofCarousel.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        showSlide(activeIndex - 1);
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        showSlide(activeIndex + 1);
+      }
+    });
+    proofCarousel.addEventListener('touchstart', (event) => {
+      touchStartX = event.changedTouches[0]?.clientX || 0;
+    }, { passive: true });
+    proofCarousel.addEventListener('touchend', (event) => {
+      const touchEndX = event.changedTouches[0]?.clientX || 0;
+      const distance = touchEndX - touchStartX;
+      if (Math.abs(distance) < 48) return;
+      showSlide(activeIndex + (distance < 0 ? 1 : -1));
+    }, { passive: true });
+
+    slides.forEach((slide) => {
+      const video = slide.querySelector('[data-testimonial-video]');
+      const playButton = slide.querySelector('[data-video-play]');
+      if (!video || !playButton) return;
+      playButton.addEventListener('click', () => {
+        slides.forEach((otherSlide) => {
+          if (otherSlide !== slide) stopVideo(otherSlide);
+        });
+        video.controls = true;
+        slide.classList.add('is-playing');
+        video.play().catch(() => {
+          video.controls = false;
+          slide.classList.remove('is-playing');
+        });
+      });
+      video.addEventListener('ended', () => stopVideo(slide, false));
+    });
+  }
 
   if (window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
     document.querySelectorAll('[data-magnetic]').forEach((element) => {
