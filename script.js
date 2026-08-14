@@ -10,6 +10,7 @@
   const mobileMenu = document.querySelector('.mobile-menu');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const compactViewport = window.matchMedia('(max-width: 820px)');
+  const heroVideo = document.querySelector('[data-hero-video]');
   const parallaxLayers = [...document.querySelectorAll('[data-speed]')];
   const process = document.querySelector('[data-process]');
   const story = document.querySelector('[data-story]');
@@ -17,6 +18,18 @@
   let ticking = false;
 
   requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('ready')));
+
+  if (heroVideo) {
+    const updateHeroVideo = () => {
+      const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+      const shouldPlay = !reduceMotion.matches && !saveData && !document.hidden;
+      if (shouldPlay) heroVideo.play().catch(() => {});
+      else heroVideo.pause();
+    };
+    updateHeroVideo();
+    document.addEventListener('visibilitychange', updateHeroVideo);
+    reduceMotion.addEventListener?.('change', updateHeroVideo);
+  }
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
