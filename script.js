@@ -773,7 +773,7 @@
       const data = new FormData(partnerForm);
       const optionalRegistration = String(data.get('registration') || '').trim() || 'Não informado';
       const message = [
-        'Olá! Quero ser parceiro da Legacy Ativos Judiciais.',
+        'Olá! Quero apresentar uma oportunidade ou cadastrar meu perfil como parceiro da Legacy.',
         '',
         '*APRESENTAÇÃO DO PARCEIRO*',
         `Nome: ${data.get('name')}`,
@@ -784,7 +784,7 @@
         `Localização: ${data.get('city')} - ${data.get('state')}`,
         `Oportunidade: ${data.get('opportunity')}`,
         '',
-        '*SOBRE A ATUAÇÃO*',
+        '*ATUAÇÃO OU OPORTUNIDADE*',
         String(data.get('message')).trim()
       ].join('\n');
 
