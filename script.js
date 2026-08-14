@@ -154,6 +154,32 @@
     document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
   }
 
+  const processMap = document.querySelector('[data-process-map]');
+  if (processMap) {
+    if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+      processMap.classList.add('is-map-visible');
+    } else {
+      const processMapObserver = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-map-visible');
+          currentObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.24, rootMargin: '0px 0px -8% 0px' });
+      processMapObserver.observe(processMap);
+    }
+
+    if (window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
+      processMap.addEventListener('pointermove', (event) => {
+        const section = processMap.closest('.process-map');
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        section.style.setProperty('--map-x', `${event.clientX - rect.left}px`);
+        section.style.setProperty('--map-y', `${event.clientY - rect.top}px`);
+      }, { passive: true });
+    }
+  }
+
   if (hero && window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
     hero.addEventListener('pointermove', (event) => {
       const rect = hero.getBoundingClientRect();
@@ -362,7 +388,7 @@
     processSteps[0].classList.add('is-current');
   }
 
-  const valueCarousel = document.querySelector('[data-value-carousel]');
+  const valueCarousel = document.querySelector('[data-value-carousel]:not([hidden])');
   if (valueCarousel && compactViewport.matches) {
     const viewport = valueCarousel.querySelector('[data-value-viewport]');
     const cards = [...valueCarousel.querySelectorAll('[data-value-card]')];

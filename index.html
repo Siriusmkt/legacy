@@ -23,7 +23,7 @@
       rel="stylesheet"
     >
     <script>document.documentElement.classList.add('js');</script>
-    <link rel="stylesheet" href="styles.css?v=proof-phone-3">
+    <link rel="stylesheet" href="styles.css?v=process-map-2">
   </head>
   <body class="home-page">
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -83,7 +83,7 @@
                 <span>Quero analisar meu precatório</span>
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
-            <a class="text-link" href="como-funciona.html">Entender o processo <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#processo">Entender o processo <span aria-hidden="true">↓</span></a>
             </div>
             <p class="hero-note">
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-2.7 8.3-7 10-4.3-1.7-7-5.6-7-10V6l7-3Z" /><path d="m9 12 2 2 4-4" /></svg>
@@ -109,6 +109,79 @@
           <span>Role para conhecer</span>
           <span class="hero-footer-line"></span>
           <span>São Paulo · Brasil</span>
+        </div>
+      </section>
+
+      <section class="process-map section" id="processo" aria-labelledby="process-map-title">
+        <div class="shell process-map-heading">
+          <div>
+            <p class="eyebrow reveal"><span></span> Como funciona</p>
+            <h2 id="process-map-title" class="reveal">Cinco passos.<br><em>Uma decisão clara.</em></h2>
+          </div>
+          <div class="process-map-intro reveal">
+            <p>Do primeiro contato ao pagamento, você sabe o que está acontecendo e qual é o próximo passo. A Legacy acompanha cada etapa.</p>
+            <a class="text-link" href="como-funciona.html">Ver todos os detalhes <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="shell process-map-canvas" data-process-map>
+          <svg class="process-map-links" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="processRouteGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#8f6d2b" stop-opacity=".3"/>
+                <stop offset=".52" stop-color="#f0cf82"/>
+                <stop offset="1" stop-color="#b8872e" stop-opacity=".55"/>
+              </linearGradient>
+              <radialGradient id="processCoreGradient">
+                <stop offset="0" stop-color="#f1cd7b" stop-opacity=".8"/>
+                <stop offset="1" stop-color="#a47122" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <path class="process-spoke process-spoke-1" pathLength="1" d="M600 310 C430 250 305 190 150 170"/>
+            <path class="process-spoke process-spoke-2" pathLength="1" d="M600 310 C455 360 390 430 280 440"/>
+            <path class="process-spoke process-spoke-3" pathLength="1" d="M600 310 C600 245 595 190 590 140"/>
+            <path class="process-spoke process-spoke-4" pathLength="1" d="M600 310 C690 350 735 420 820 440"/>
+            <path class="process-spoke process-spoke-5" pathLength="1" d="M600 310 C775 290 905 250 1060 210"/>
+            <path class="process-route" pathLength="1" d="M150 170 C145 305 185 415 280 440 C405 475 490 215 590 140 C690 65 720 425 820 440 C930 455 965 275 1060 210"/>
+            <path class="process-route-signal" d="M150 170 C145 305 185 415 280 440 C405 475 490 215 590 140 C690 65 720 425 820 440 C930 455 965 275 1060 210"/>
+            <circle class="process-core-halo" cx="600" cy="310" r="92" fill="url(#processCoreGradient)"/>
+          </svg>
+
+          <div class="process-map-core" aria-hidden="true">
+            <span class="process-core-ring"></span>
+            <img src="assets/legacy-logo.png" width="826" height="688" alt="">
+            <small>Legacy acompanha</small>
+          </div>
+
+          <article class="process-map-node process-map-node-1" style="--node-order: 1">
+            <span class="process-node-index">01</span>
+            <div><small>Comece pelo WhatsApp</small><h3>Primeiro contato</h3><p>Envie o número do processo e os dados básicos. Confirmamos se o crédito está entre os perfis analisados.</p></div>
+          </article>
+
+          <article class="process-map-node process-map-node-2" style="--node-order: 2">
+            <span class="process-node-index">02</span>
+            <div><small>Somente o necessário</small><h3>Documentação</h3><p>O time informa quais documentos são necessários para compreender o crédito e a situação do titular.</p></div>
+          </article>
+
+          <article class="process-map-node process-map-node-3" style="--node-order: 3">
+            <span class="process-node-index">03</span>
+            <div><small>Federal: até 24 horas*</small><h3>Análise completa</h3><p>Processo e situação fiscal, jurídica e financeira são avaliados em conjunto antes de qualquer proposta.</p></div>
+          </article>
+
+          <article class="process-map-node process-map-node-4" style="--node-order: 4">
+            <span class="process-node-index">04</span>
+            <div><small>Sem compromisso</small><h3>Proposta e decisão</h3><p>Você conhece valores, condições e próximos passos. A negociação só avança se fizer sentido para você.</p></div>
+          </article>
+
+          <article class="process-map-node process-map-node-5" style="--node-order: 5">
+            <span class="process-node-index">05</span>
+            <div><small>Tudo documentado</small><h3>Formalização e pagamento</h3><p>Após aceite, documentos e validações, o pagamento segue conforme as condições registradas.</p></div>
+          </article>
+        </div>
+
+        <div class="shell process-map-footer reveal">
+          <p><span></span> *Precatórios estaduais e municipais: análise entre 5 e 8 dias úteis.</p>
+          <a class="button button-primary" href="https://wa.me/5511948179546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Legacy%20e%20gostaria%20de%20iniciar%20uma%20an%C3%A1lise." target="_blank" rel="noopener noreferrer"><span>Iniciar minha análise</span></a>
         </div>
       </section>
 
@@ -279,134 +352,6 @@
 
           <div class="proof-dots" data-proof-dots aria-label="Selecionar prova social"></div>
           <p class="proof-hint">Use as setas para conhecer o próximo relato</p>
-        </div>
-      </section>
-
-      <section class="value-journey section" aria-labelledby="value-journey-title" data-value-carousel>
-        <div class="shell value-journey-heading">
-          <div>
-            <p class="eyebrow reveal"><span></span> Da espera à possibilidade</p>
-            <h2 id="value-journey-title" class="reveal">Do direito reconhecido<br><em>ao valor disponível.</em></h2>
-          </div>
-          <div class="value-journey-intro reveal">
-            <p>Conheça os marcos de uma negociação conduzida com análise, transparência e segurança. Percorra os cartões para acompanhar cada avanço da jornada.</p>
-            <a class="text-link" href="como-funciona.html">Entender o processo completo <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-
-        <section class="value-carousel" data-value-viewport tabindex="0" aria-roledescription="carrossel" aria-label="Etapas da jornada de negociação">
-          <div class="value-cylinder" data-value-cylinder>
-            <article class="value-card" data-value-card data-card-title="Crédito reconhecido">
-              <div class="value-card-volume">
-                <i class="value-card-slice slice-1" aria-hidden="true"></i><i class="value-card-slice slice-2" aria-hidden="true"></i><i class="value-card-slice slice-3" aria-hidden="true"></i><i class="value-card-slice slice-4" aria-hidden="true"></i>
-                <div class="value-card-face value-card-front" style="--card-image: url('assets/legacy-card-black.webp')">
-                  <div class="value-card-shine" aria-hidden="true"></div>
-                  <span class="value-card-kicker">Jornada 01</span>
-                  <img class="value-card-logo" src="assets/legacy-logo.png" width="826" height="688" alt="">
-                  <span class="value-card-chip" aria-hidden="true"><i></i><i></i></span>
-                  <div class="value-card-copy"><small>Crédito reconhecido</small><h3>Seu direito,<br>em contexto.</h3><p>O ponto de partida é compreender o ativo e reunir as informações essenciais.</p></div>
-                  <span class="value-card-mark" aria-hidden="true">01</span>
-                </div>
-                <div class="value-card-face value-card-back">
-                  <span class="value-card-stripe" aria-hidden="true"></span>
-                  <div class="value-card-backcopy"><small>O que acontece</small><strong>Identificação do ativo</strong><p>Entendemos os dados iniciais do precatório e o contexto de quem busca uma alternativa.</p></div>
-                  <span class="value-card-code">LEGACY / 01 · INÍCIO</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="value-card" data-value-card data-card-title="Análise individual">
-              <div class="value-card-volume">
-                <i class="value-card-slice slice-1" aria-hidden="true"></i><i class="value-card-slice slice-2" aria-hidden="true"></i><i class="value-card-slice slice-3" aria-hidden="true"></i><i class="value-card-slice slice-4" aria-hidden="true"></i>
-                <div class="value-card-face value-card-front" style="--card-image: url('assets/legacy-card-blue.webp')">
-                  <div class="value-card-shine" aria-hidden="true"></div>
-                  <span class="value-card-kicker">Jornada 02</span>
-                  <img class="value-card-logo" src="assets/legacy-logo.png" width="826" height="688" alt="">
-                  <span class="value-card-chip" aria-hidden="true"><i></i><i></i></span>
-                  <div class="value-card-copy"><small>Análise individual</small><h3>O valor de face<br>é só o começo.</h3><p>Processo, documentação e particularidades entram na avaliação do crédito.</p></div>
-                  <span class="value-card-mark" aria-hidden="true">02</span>
-                </div>
-                <div class="value-card-face value-card-back">
-                  <span class="value-card-stripe" aria-hidden="true"></span>
-                  <div class="value-card-backcopy"><small>O que acontece</small><strong>Leitura jurídica e financeira</strong><p>O time observa os elementos disponíveis para construir uma análise adequada ao caso.</p></div>
-                  <span class="value-card-code">LEGACY / 02 · ANÁLISE</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="value-card" data-value-card data-card-title="Proposta transparente">
-              <div class="value-card-volume">
-                <i class="value-card-slice slice-1" aria-hidden="true"></i><i class="value-card-slice slice-2" aria-hidden="true"></i><i class="value-card-slice slice-3" aria-hidden="true"></i><i class="value-card-slice slice-4" aria-hidden="true"></i>
-                <div class="value-card-face value-card-front" style="--card-image: url('assets/legacy-card-emerald.webp')">
-                  <div class="value-card-shine" aria-hidden="true"></div>
-                  <span class="value-card-kicker">Jornada 03</span>
-                  <img class="value-card-logo" src="assets/legacy-logo.png" width="826" height="688" alt="">
-                  <span class="value-card-chip" aria-hidden="true"><i></i><i></i></span>
-                  <div class="value-card-copy"><small>Proposta transparente</small><h3>Condições para<br>comparar e decidir.</h3><p>Você conhece valores, critérios e próximos passos antes de qualquer aceite.</p></div>
-                  <span class="value-card-mark" aria-hidden="true">03</span>
-                </div>
-                <div class="value-card-face value-card-back">
-                  <span class="value-card-stripe" aria-hidden="true"></span>
-                  <div class="value-card-backcopy"><small>O que acontece</small><strong>Informação antes da escolha</strong><p>A proposta é apresentada de forma compreensível, sem criar obrigação de seguir.</p></div>
-                  <span class="value-card-code">LEGACY / 03 · PROPOSTA</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="value-card" data-value-card data-card-title="Formalização segura">
-              <div class="value-card-volume">
-                <i class="value-card-slice slice-1" aria-hidden="true"></i><i class="value-card-slice slice-2" aria-hidden="true"></i><i class="value-card-slice slice-3" aria-hidden="true"></i><i class="value-card-slice slice-4" aria-hidden="true"></i>
-                <div class="value-card-face value-card-front" style="--card-image: url('assets/legacy-card-burgundy.webp')">
-                  <div class="value-card-shine" aria-hidden="true"></div>
-                  <span class="value-card-kicker">Jornada 04</span>
-                  <img class="value-card-logo" src="assets/legacy-logo.png" width="826" height="688" alt="">
-                  <span class="value-card-chip" aria-hidden="true"><i></i><i></i></span>
-                  <div class="value-card-copy"><small>Formalização segura</small><h3>Cada aceite<br>vira documento.</h3><p>Com a sua decisão, seguimos com os instrumentos e comunicações aplicáveis.</p></div>
-                  <span class="value-card-mark" aria-hidden="true">04</span>
-                </div>
-                <div class="value-card-face value-card-back">
-                  <span class="value-card-stripe" aria-hidden="true"></span>
-                  <div class="value-card-backcopy"><small>O que acontece</small><strong>Condições formalizadas</strong><p>Os documentos registram a operação e dão clareza às responsabilidades de cada parte.</p></div>
-                  <span class="value-card-code">LEGACY / 04 · SEGURANÇA</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="value-card" data-value-card data-card-title="Valor disponível">
-              <div class="value-card-volume">
-                <i class="value-card-slice slice-1" aria-hidden="true"></i><i class="value-card-slice slice-2" aria-hidden="true"></i><i class="value-card-slice slice-3" aria-hidden="true"></i><i class="value-card-slice slice-4" aria-hidden="true"></i>
-                <div class="value-card-face value-card-front value-card-final" style="--card-image: url('assets/legacy-card-champagne.webp')">
-                  <div class="value-card-shine" aria-hidden="true"></div>
-                  <span class="value-card-kicker">Jornada 05</span>
-                  <img class="value-card-logo" src="assets/legacy-logo.png" width="826" height="688" alt="">
-                  <span class="value-card-chip" aria-hidden="true"><i></i><i></i></span>
-                  <div class="value-card-copy"><small>Valor disponível</small><h3>Da espera para<br>uma escolha concreta.</h3><p>Após a conclusão, o pagamento segue para a conta indicada, conforme o acordado.</p></div>
-                  <span class="value-card-mark" aria-hidden="true">05</span>
-                </div>
-                <div class="value-card-face value-card-back value-card-final-back">
-                  <span class="value-card-stripe" aria-hidden="true"></span>
-                  <div class="value-card-backcopy"><small>O que acontece</small><strong>Pagamento da operação</strong><p>Com a formalização concluída, o valor é pago segundo as condições registradas.</p></div>
-                  <span class="value-card-code">LEGACY / 05 · CONCLUSÃO</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <div class="shell value-carousel-controls reveal">
-          <div class="value-carousel-status" aria-live="polite"><span data-value-count>01 / 05</span><strong data-value-title>Crédito reconhecido</strong></div>
-          <div class="value-carousel-dots" role="group" aria-label="Selecionar etapa">
-            <button type="button" data-value-dot="0" aria-label="Ir para Crédito reconhecido" aria-pressed="true"></button>
-            <button type="button" data-value-dot="1" aria-label="Ir para Análise individual" aria-pressed="false"></button>
-            <button type="button" data-value-dot="2" aria-label="Ir para Proposta transparente" aria-pressed="false"></button>
-            <button type="button" data-value-dot="3" aria-label="Ir para Formalização segura" aria-pressed="false"></button>
-            <button type="button" data-value-dot="4" aria-label="Ir para Valor disponível" aria-pressed="false"></button>
-          </div>
-          <div class="value-carousel-arrows">
-            <button type="button" data-value-toggle aria-label="Pausar rotação automática" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
-            <button type="button" data-value-prev aria-label="Etapa anterior"><span aria-hidden="true">←</span></button>
-            <button type="button" data-value-next aria-label="Próxima etapa"><span aria-hidden="true">→</span></button>
-          </div>
         </div>
       </section>
 
