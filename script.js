@@ -156,8 +156,10 @@
 
   const processMap = document.querySelector('[data-process-map]');
   if (processMap) {
+    const processNodes = [...processMap.querySelectorAll('.process-map-node')];
     if (reduceMotion.matches || !('IntersectionObserver' in window)) {
       processMap.classList.add('is-map-visible');
+      processNodes.forEach((node) => node.classList.add('is-node-visible'));
     } else {
       const processMapObserver = new IntersectionObserver((entries, currentObserver) => {
         entries.forEach((entry) => {
@@ -167,6 +169,17 @@
         });
       }, { threshold: 0.24, rootMargin: '0px 0px -8% 0px' });
       processMapObserver.observe(processMap);
+
+      if (window.matchMedia('(max-width: 820px)').matches) {
+        const processNodeObserver = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-node-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.28, rootMargin: '0px 0px -14% 0px' });
+        processNodes.forEach((node) => processNodeObserver.observe(node));
+      }
     }
 
     if (window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
