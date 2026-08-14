@@ -3,8 +3,10 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const compactViewport = window.matchMedia('(max-width: 820px)');
-  const sections = [...document.querySelectorAll('.section-light, .statement, .process, .faq')];
+  const calmWave = document.body.classList.contains('clean-inner');
+  const sections = [...document.querySelectorAll('.section-light, .statement, .process, .faq, .decision-band')];
   if (!sections.length) return;
+  const ambientMotion = true;
 
   const vertexShader = `
     attribute vec2 a_position;
@@ -104,7 +106,9 @@
       this.startTime = performance.now() - index * 1450;
       this.resizeFrame = 0;
       this.lastDraw = 0;
-      this.frameInterval = compactViewport.matches ? 1000 / 30 : 0;
+      this.frameInterval = calmWave
+        ? 1000 / (compactViewport.matches ? 20 : 24)
+        : (compactViewport.matches ? 1000 / 30 : 0);
 
       const gl = this.canvas.getContext('webgl', {
         antialias: false,
@@ -202,14 +206,14 @@
       this.lastDraw = now;
       this.gl.useProgram(this.program);
       this.gl.uniform2f(this.resolutionLocation, this.canvas.width, this.canvas.height);
-      this.gl.uniform1f(this.timeLocation, now - this.startTime);
+      this.gl.uniform1f(this.timeLocation, (now - this.startTime) * (calmWave ? .56 : 1));
       this.gl.uniform1f(this.seedLocation, this.seed);
       this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
       if (this.running && !reduceMotion.matches) this.frame = requestAnimationFrame(this.render);
     };
 
     start() {
-      if (!this.gl || this.running || reduceMotion.matches || document.hidden) return;
+      if (!ambientMotion || !this.gl || this.running || reduceMotion.matches || document.hidden) return;
       this.running = true;
       this.frame = requestAnimationFrame(this.render);
     }

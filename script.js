@@ -10,6 +10,7 @@
   const mobileMenu = document.querySelector('.mobile-menu');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const compactViewport = window.matchMedia('(max-width: 820px)');
+  const calmMode = body.classList.contains('clean-inner');
   const parallaxLayers = [...document.querySelectorAll('[data-speed]')];
   const process = document.querySelector('[data-process]');
   const story = document.querySelector('[data-story]');
@@ -88,7 +89,7 @@
     progress.style.transform = `scaleX(${clamp(scrollY / maxScroll, 0, 1)})`;
     header.classList.toggle('scrolled', scrollY > 24);
 
-    if (!reduceMotion.matches && !compactViewport.matches) {
+    if (!calmMode && !reduceMotion.matches && !compactViewport.matches) {
       parallaxLayers.forEach((layer) => {
         const rect = layer.parentElement.getBoundingClientRect();
         if (rect.bottom > -100 && rect.top < window.innerHeight + 100) {
@@ -115,7 +116,7 @@
       story.style.setProperty('--story-progress', value.toFixed(3));
     }
 
-    if (!reduceMotion.matches && !compactViewport.matches) {
+    if (!calmMode && !reduceMotion.matches && !compactViewport.matches) {
       depthScenes.forEach((scene) => {
         const rect = scene.getBoundingClientRect();
         if (rect.bottom > -120 && rect.top < window.innerHeight + 120) {
@@ -182,18 +183,9 @@
       }
     }
 
-    if (window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
-      processMap.addEventListener('pointermove', (event) => {
-        const section = processMap.closest('.process-map');
-        if (!section) return;
-        const rect = section.getBoundingClientRect();
-        section.style.setProperty('--map-x', `${event.clientX - rect.left}px`);
-        section.style.setProperty('--map-y', `${event.clientY - rect.top}px`);
-      }, { passive: true });
-    }
   }
 
-  if (hero && window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
+  if (hero && !calmMode && window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
     hero.addEventListener('pointermove', (event) => {
       const rect = hero.getBoundingClientRect();
       hero.style.setProperty('--pointer-x', `${event.clientX - rect.left}px`);
@@ -202,7 +194,7 @@
   }
 
   const innerHero = document.querySelector('.inner-hero');
-  if (innerHero && window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
+  if (innerHero && !calmMode && window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
     innerHero.addEventListener('pointermove', (event) => {
       const rect = innerHero.getBoundingClientRect();
       innerHero.style.setProperty('--scene-x', `${event.clientX - rect.left}px`);
@@ -331,7 +323,7 @@
     });
   }
 
-  if (window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
+  if (!calmMode && window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
     document.querySelectorAll('[data-magnetic]').forEach((element) => {
       element.addEventListener('pointermove', (event) => {
         const rect = element.getBoundingClientRect();
@@ -408,7 +400,7 @@
     valueCarousel.classList.add('is-mobile-story');
     viewport.removeAttribute('tabindex');
     viewport.setAttribute('aria-roledescription', 'sequência vertical');
-    viewport.setAttribute('aria-label', 'Etapas da jornada de negociação. Role para avançar.');
+    viewport.setAttribute('aria-label', 'Diferenciais da Legacy. Role para conhecer.');
 
     cards.forEach((card, index) => {
       card.style.removeProperty('transform');
@@ -791,7 +783,7 @@
   }
 
   const transitionLayer = document.querySelector('.page-transition');
-  if (transitionLayer && !reduceMotion.matches) {
+  if (transitionLayer && !calmMode && !reduceMotion.matches) {
     document.querySelectorAll('a[href]').forEach((link) => {
       link.addEventListener('click', (event) => {
         if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
