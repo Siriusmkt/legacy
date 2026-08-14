@@ -17,6 +17,24 @@
   const depthScenes = [...document.querySelectorAll('.depth-scene')];
   let ticking = false;
 
+  /*
+   * Use WhatsApp's full send endpoint instead of the wa.me shortener.
+   * The shortener intermittently fails inside mobile in-app browsers;
+   * keeping the navigation in the same tab on phones also improves the
+   * hand-off to the installed WhatsApp application.
+   */
+  document.querySelectorAll('a[href*="wa.me/5511948179546"]').forEach((link) => {
+    const currentUrl = new URL(link.href, window.location.href);
+    const message = currentUrl.searchParams.get('text');
+    const whatsappUrl = new URL('https://api.whatsapp.com/send');
+    whatsappUrl.searchParams.set('phone', '5511948179546');
+    if (message) whatsappUrl.searchParams.set('text', message);
+    whatsappUrl.searchParams.set('type', 'phone_number');
+    whatsappUrl.searchParams.set('app_absent', '0');
+    link.href = whatsappUrl.toString();
+    if (compactViewport.matches) link.removeAttribute('target');
+  });
+
   requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('ready')));
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -773,8 +791,8 @@
       status.classList.add('is-success');
       status.textContent = 'Dados validados. Abrindo sua apresentação no WhatsApp…';
       const link = document.createElement('a');
-      link.href = `https://wa.me/5511948179546?text=${encodeURIComponent(message)}`;
-      link.target = '_blank';
+      link.href = `https://api.whatsapp.com/send?phone=5511948179546&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
+      if (!compactViewport.matches) link.target = '_blank';
       link.rel = 'noopener noreferrer';
       document.body.append(link);
       link.click();
