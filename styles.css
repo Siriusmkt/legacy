@@ -1890,7 +1890,7 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 .flow-button:hover,
 .flow-button:focus-visible {
   border-color: transparent;
-  border-radius: 12px;
+  border-radius: 999px;
   color: var(--flow-on-fill) !important;
   box-shadow: 0 18px 42px rgba(0, 0, 0, .24), 0 0 0 1px rgba(255, 255, 255, .055);
 }
