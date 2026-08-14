@@ -200,6 +200,44 @@
     });
   });
 
+  const testimonialCards = [...document.querySelectorAll('[data-testimonial-card]')];
+  testimonialCards.forEach((card) => {
+    const video = card.querySelector('[data-testimonial-video]');
+    const playButton = card.querySelector('[data-video-play]');
+    if (!video || !playButton) return;
+
+    const resetVideo = () => {
+      video.pause();
+      video.controls = false;
+      card.classList.remove('is-playing');
+      if (video.ended) {
+        video.currentTime = 0;
+        video.load();
+      }
+    };
+
+    playButton.addEventListener('click', () => {
+      testimonialCards.forEach((otherCard) => {
+        if (otherCard === card) return;
+        const otherVideo = otherCard.querySelector('[data-testimonial-video]');
+        if (!otherVideo) return;
+        otherVideo.pause();
+        otherVideo.currentTime = 0;
+        otherVideo.controls = false;
+        otherCard.classList.remove('is-playing');
+      });
+
+      video.controls = true;
+      card.classList.add('is-playing');
+      video.play().catch(() => {
+        video.controls = false;
+        card.classList.remove('is-playing');
+      });
+    });
+
+    video.addEventListener('ended', resetVideo);
+  });
+
   if (window.matchMedia('(pointer: fine)').matches && !reduceMotion.matches) {
     document.querySelectorAll('[data-magnetic]').forEach((element) => {
       element.addEventListener('pointermove', (event) => {
