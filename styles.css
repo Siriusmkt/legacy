@@ -5472,6 +5472,9 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 .clean-inner .tax-sources .source-cards p { color: rgba(245, 240, 230, .62); }
 .tax-contact .page-next-grid { align-items: center; }
 
+/* Content-focused pass: keep the process cards compact after removing repeated side notes. */
+.page-how .story-step { min-height: auto; padding-bottom: clamp(30px, 4vw, 52px); }
+
 @media (max-width: 980px) {
   .partner-coverage-grid { grid-template-columns: 1fr 1fr; }
   .partner-coverage-featured { grid-column: 1 / -1; }
