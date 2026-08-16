@@ -938,8 +938,8 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 }
 
 .inner-page .desktop-nav { gap: clamp(18px, 1.8vw, 31px); }
-.inner-page .desktop-nav a[aria-current="page"] { color: var(--gold-light); }
-.inner-page .desktop-nav a[aria-current="page"]::after { transform: scaleX(1); }
+.desktop-nav a[aria-current="page"] { color: var(--gold-light); }
+.desktop-nav a[aria-current="page"]::after { transform: scaleX(1); }
 .header-cta > span { font-size: 16px; }
 
 .page-transition {
@@ -1229,6 +1229,14 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 .editorial-body { padding-top: 72px; color: #625c52; }
 .editorial-body p { font-size: 15px; line-height: 1.9; }
 .editorial-body p + p { margin-top: 24px; }
+.editorial-body .about-signature {
+  display: grid;
+  gap: 4px;
+  padding: 18px 0 18px 20px;
+  border-left: 1px solid var(--gold);
+}
+.editorial-body .about-signature strong { color: var(--ink); font-family: var(--display); font-size: 20px; font-weight: 500; }
+.editorial-body .about-signature span { color: #85765f; font-size: 12px; letter-spacing: .06em; }
 .split-heading { display: grid; grid-template-columns: 1.35fr .65fr; gap: clamp(50px, 10vw, 150px); align-items: end; margin-bottom: 72px; }
 .split-heading > p { max-width: 490px; margin-bottom: 8px; color: var(--muted); }
 .dark-heading > p { color: #675f54; }
@@ -2190,6 +2198,8 @@ h2 em { color: var(--gold-light); font-weight: 400; }
   .js .mobile-menu.open nav > a:nth-child(4) { transition-delay: 105ms; }
   .js .mobile-menu.open nav > a:nth-child(5) { transition-delay: 140ms; }
   .js .mobile-menu.open nav > a:nth-child(6) { transition-delay: 175ms; }
+  .js .mobile-menu.open nav > a:nth-child(7) { transition-delay: 210ms; }
+  .js .mobile-menu.open nav > a:nth-child(8) { transition-delay: 245ms; }
   .mobile-menu nav > a:not(.mobile-menu-cta)::after { content: "↗"; position: absolute; right: 2px; color: #65573f; font-family: var(--body); font-size: 14px; }
   .mobile-menu nav > a[aria-current="page"] { padding-left: 20px; color: var(--gold-light); }
   .mobile-menu nav > a[aria-current="page"]::before { content: ""; position: absolute; left: 0; width: 7px; height: 7px; border: 1px solid var(--gold); transform: rotate(45deg); }
