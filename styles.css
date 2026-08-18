@@ -1239,6 +1239,10 @@ h2 em { color: var(--gold-light); font-weight: 400; }
 .editorial-body .about-signature span { color: #85765f; font-size: 12px; letter-spacing: .06em; }
 .split-heading { display: grid; grid-template-columns: 1.35fr .65fr; gap: clamp(50px, 10vw, 150px); align-items: end; margin-bottom: 72px; }
 .split-heading > p { max-width: 490px; margin-bottom: 8px; color: var(--muted); }
+.ceo-profile { max-width: 490px; margin-bottom: 8px; }
+.ceo-profile p { margin: 0; color: var(--muted); line-height: 1.65; }
+.ceo-profile .text-link { margin-top: 18px; }
+.ceo-profile .text-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 .dark-heading > p { color: #675f54; }
 
 /* About sections */
@@ -5544,4 +5548,31 @@ h2 em { color: var(--gold-light); font-weight: 400; }
   .tax-document-list li { grid-template-columns: 42px minmax(0, 1fr); gap: 12px; padding-block: 26px; }
   .tax-process-list h3,
   .tax-document-list h3 { font-size: 28px; }
+}
+
+/* =========================================================
+   HOME HERO · MANCHETE EM TRÊS LINHAS
+   A frase mais longa pede corpo menor para caber em uma
+   linha só por vez, sem sobra na coluna de texto.
+   ========================================================= */
+.hero h1 {
+  max-width: 100%;
+  font-size: clamp(34px, 3.7vw, 58px);
+  line-height: .96;
+  letter-spacing: -.05em;
+}
+.hero h1 .line { padding: .06em .1em .12em .06em; margin: -.06em -.1em -.12em -.06em; }
+.js.ready .hero h1 .line:nth-child(3) > span { transition-delay: 200ms; }
+/* Duas linhas equilibradas em vez de uma última linha com duas palavras. */
+.hero-lead { max-width: 560px; text-wrap: balance; }
+
+@media (max-width: 820px) {
+  /* No celular a manchete vira uma frase corrida: o navegador
+     equilibra as quebras em vez de herdar as três linhas fixas. */
+  .hero h1 { font-size: clamp(32px, 9.6vw, 46px); line-height: 1.04; letter-spacing: -.042em; }
+  .hero h1 .line,
+  .hero h1 .line > span { display: inline; padding: 0; margin: 0; }
+  .hero h1 .accent { font-size: 1em; }
+  .js.ready .hero h1 .line:nth-child(2) > span,
+  .js.ready .hero h1 .line:nth-child(3) > span { transition-delay: 0ms; }
 }
